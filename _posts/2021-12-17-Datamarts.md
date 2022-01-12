@@ -25,7 +25,81 @@ The solution, released today, consists in a Python script that:
 
 * reduces the workload of the less efficient PBI and the slow, old computers, outsourcing most of the ETL processes that feed the PBI reports (handling more efficiently with _.xlsx_ files, avoiding ShP site size issues, and shortcoming data quality problems in the original data sources),
 
-          [script of one of the python functions]
+          #14. Steps to upload the resulting CSV files to SharePoint:
+          def upload_file_to_sharepoint(source_folder,file_name):
+      
+          #a. Reads the file in OneDrive:
+          path=source_folder+file_name
+          with open(path, 'rb') as content_file:
+          file_content = content_file.read()
+
+          #b. Connecting to the desired folder in the tennant:
+          target_url="/sites/Group-HPRS/Sdilene%20dokumenty/Data_loads-Do_not_modify/individual_inditracks"
+          target_folder = ctx2.web.get_folder_by_server_relative_url(target_url)
+
+          #c. Upload the file to SharePoint
+          name = os.path.basename(path)
+          target_file = target_folder.upload_file(name, file_content).execute_query()    
+
+          #15. Run program and create individual CSVs for each project:
+          print(current_inditracks[['Country', 'Project_code']])
+          ctx2=autenticate_in_sharepoint(url_hprs,username,password) #function n.3, for connecting to the central SharePoint site where the final CSVs will be uploaded.
+
+          for index, row in df_shp_sites.iterrows():
+              shp_country = row['country']
+              url = row['site']
+              try:
+                  ctx=autenticate_in_sharepoint(url,username,password) #function n.4, for dowloading tables from each Country SharePoint
+
+                  for index, row in current_inditracks.iterrows():
+                      project_code= row['Project_code']
+                      inditrack_country=row['Country']
+                      relative_url=row['IndiTrack_Relative_url']
+
+                      if shp_country ==inditrack_country:
+
+                          try:
+
+                              Outcomes,Activities, Indicators, Milestones = download_inditrack(ctx, project_code, relative_url) #function n.4
+
+                              #14a. Create csv for DIM_outcome_progress: 
+                              DIM_outcome_progress =dim_outc_progress(Outcomes, project_code, timestamp) #function n.5
+
+                              #14b. Create csv for outc_expected_time:
+                              outc_expected_time = outc_exp_time(DIM_outcome_progress, Indicators) #function n.6
+
+                              #14c. Create csv for outc_reported_time:
+                              outc_reported_time = outc_rep_time(DIM_outcome_progress, Indicators) #function n.7
+
+                              #14d. Create csv for outcome_progress_top:
+                              outcome_progress_top = outc_time_top(DIM_outcome_progress, outc_reported_time) #function n.8
+
+                              #14e. Create csv for DIM_activities_progress:
+                              DIM_activities_progress = dim_act_progress (Activities, project_code, timestamp) #function n.9
+
+                              #14f. Create csv for act_expected_time:
+                              act_expected_time = act_exp_time(DIM_activities_progress, Indicators) #function n.10
+
+                              #14g. Create csv for act_reported_time:
+                              act_reported_time = act_rep_time(DIM_activities_progress, Indicators) #function n.11
+
+                              #14h. Create csv for activity_progress_top:
+                              activity_progress_top = act_time_top(DIM_activities_progress, act_reported_time) #function n.12
+
+                              #14i. Create csv for milestones:
+                              milestones= milestones_df(Milestones,project_code, timestamp) #function n.13
+
+                              print ("")
+                              print('Iteration for ' + project_code + ' has been sucessful')        
+
+                          except:       
+                              print ("")
+                              print('Iteration for ' + project_code + ' has been cancelled')
+
+
+              except:
+                  print("The Golem has failed to connect to " + shp_country + "'s SharePoint site")
+          
 
 * outputs one ready-to-use _.csv_ file for each different table present in the report´s model (this prevents multiple calls to the same file during refresh),
 
