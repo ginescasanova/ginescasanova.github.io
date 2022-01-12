@@ -9,8 +9,8 @@ categories: blog
 <h2>Context</h2>
 Last year, I designed a new PowerBI (PBI) report template that could be used to follow up the progress of each of the projects the organization is implementing at a given moment. Every project would count on an Excel file to introduce relevant information about the project indicators and an PBI report that would visualize the data and produce additional quantitative insights. 
 <p></p>
-<a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg"><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="450">
-<a href="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg"><img src="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg" alt="report_hint" width="450">
+<a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg"><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="400"> 
+<a href="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg"><img src="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg" alt="report_hint" width="400">
 
 
 <h2>Specific problems</h2>
@@ -29,7 +29,8 @@ The solution, released today, consists in a Python script that:
 
 * outputs one ready-to-use _.csv_ file for each different table present in the report´s model (this prevents multiple calls to the same file during refresh),
 
-          [screenshot of the data model]
+![Report_Sample_Datamarts_3](https://user-images.githubusercontent.com/34288246/149145893-12aad80b-63da-4511-aae6-9873257b4f49.jpg)
+
 
 * runs every few minutes in a separated computer through the Windows Task Scheduler; this way, every update in the original _.xlsx_ data source is made available to the reports via the _.csv_ files output by the script in no time.
 
