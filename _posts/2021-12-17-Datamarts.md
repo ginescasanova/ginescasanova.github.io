@@ -12,9 +12,9 @@ Last year, I designed a new PowerBI (PBI) report template that could be used to 
 <a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg"><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="400"> 
 <a href="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg"><img src="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg" alt="report_hint" width="400">
 
+The performance of the reports on refresh has been, though, a permanent issue, reaching up to 10 minutes per refresh in the oldest computers of the organization. After full adoption of the tool in all of our country offices, we introduce today a new data pipeline that reduces the refresh time to a range from 8 to 16 seconds.
 
 <h2>Specific problems</h2>
-The performance of the reports on refresh has been, though, a permanent issue, reaching up to 10 minutes per refresh in the oldest computers of the organization. After full adoption of the tool in all of our country offices, we introduce today a new data pipeline that reduces the refresh time to a range from 8 to 16 seconds.
 <p></p>
 Performance problems were due, among other reasons, to the file type of the involved data sources (_.xlsx_ files had to be used, since the organization do not count yet on a cloud-based SQL database) and how PBI deals with it. But also to the over-exploitation of the same data sources in repeated queries within the same report, and the high number of items present in the SharePoint sites (ShP) where the data sources were present (which meant that PowerQuery needed a longer time to find the file). 
 <p></p>
