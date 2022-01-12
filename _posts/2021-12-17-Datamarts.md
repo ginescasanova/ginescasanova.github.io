@@ -14,8 +14,7 @@ Last year, I designed a new PowerBI (PBI) report template that could be used to 
 The performance of the reports on refresh has been, though, a permanent issue, reaching up to 10 minutes per refresh in the oldest computers of the organization. After full adoption of the tool in all of our country offices, we introduce today a new data pipeline that reduces the refresh time to a range from 8 to 16 seconds. 
 
 <figure>
-    <a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" rel="some text"><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg"
-         alt="Albuquerque, New Mexico">
+    <a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" ><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="200"/>
     <figcaption>Detail of one of the report's sections.</figcaption>
 </figure>
 
