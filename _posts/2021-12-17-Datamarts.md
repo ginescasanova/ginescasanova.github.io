@@ -8,8 +8,12 @@ categories: blog
 
 <h2>Context</h2>
 Last year, I designed a new PowerBI (PBI) report template that could be used to follow up the progress of each of the projects the organization is implementing at a given moment. Every project would count on an Excel file to introduce relevant information about the project indicators and an PBI report that would visualize the data and produce additional quantitative insights. 
+<p></p>
+
+<img src="https://user-images.githubusercontent.com/34288246/149134648-3f8472e9-923b-4d60-a8ad-83cb1fd91924.jpg" alt="report_hint" width="200"/>    <img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="200"/>  
 
           [example of one of the reports in PBI]
+
 
 The performance of the reports on refresh has been, though, a permanent issue, reaching up to 10 minutes per refresh in the oldest computers of the organization. After full adoption of the tool in all of our country offices, we introduce today a new data pipeline that reduces the refresh time to a range from 8 to 16 seconds. 
 
