@@ -15,7 +15,7 @@ The performance of the reports on refresh has been, though, a permanent issue, r
 
 <figure>
     <a href="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" ><img src="https://user-images.githubusercontent.com/34288246/149135915-052a509d-b88e-425e-a33e-d326aeae9f03.jpg" alt="report_hint" width="200"/>
-    <figcaption>Detail of one of the report's sections.</figcaption>
+    <figcaption><p></p>Detail of one of the report's sections.</figcaption>
 </figure>
 
 
